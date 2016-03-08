@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" type="text/css" href="css/main.css">
-  <script src="js/app.js"></script>
+  <script src="js/miniquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
   <title>SPABadge</title>
 </head>
 <body>
@@ -9,8 +11,20 @@
     <div class="logo">
       <h1> SPA Badge </h1>
     </div>
+
+
+ <script id="header" type="text/x-handlebars-template">​
+ <div> {{ headerTitle }} </div>​
+   {{#each teacherdata}}
+    <li>{{this.name}}</li>
+  {{/each}}
+​</script>
+
+
+
     <h1> SF Teachers </h1>
       <ul>
+        <script type="text/x-handlebars-template">{{"something"}}</script>
         <li><a href="#">Anne</a></li>
         <li><a href="#">Derek</a></li>
         <li><a href="#">Hunter</li>
@@ -22,5 +36,9 @@
         <li><a href="sample-page.html">Sample Page</a></li>
       </ul>
   </div>
+
+
+  <script src="js/app.js"></script>
+
 </body>
 </html>
