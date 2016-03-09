@@ -11,11 +11,11 @@ var miniQuery = (function() {
           break;
         case '.': 
           //statement
-          return  document.getElementsByClassName(restChr)[0];
+          return  document.getElementsByClassName(restChr);
           break;
         default:
           //statement
-          return document.getElementsByTagName(selector)[0];
+          return document.getElementsByTagName(selector);
           break;
       }
 
@@ -44,7 +44,10 @@ var miniQuery = (function() {
       var el = miniQuery.select(selector);
       var event = new Event(eName)
       events[eName] = event;
-      el.addEventListener(eName, callback);
+      for (i = 0; i < el.length; i++) { 
+        el[i].addEventListener(eName, callback);
+      }
+
       },
     trigger: function(selector, eName) {
       var el = miniQuery.select(selector);
@@ -64,9 +67,7 @@ var miniQuery = (function() {
         break;        
       }
     },
-
-
-
+    
     request: function(header) {
       return new Promise(function(resolve, reject){
         var req = new XMLHttpRequest();

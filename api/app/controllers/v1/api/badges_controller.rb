@@ -9,7 +9,7 @@ class V1::Api::BadgesController < ApplicationController
 
   def create
     teacher = Teacher.find(params[:teacher_id])
-    badge = Badge.create!( title: params[:title] )
+    badge = Badge.create!( title: params[:title], points: 0 )
     teacher.badges << badge
     render json: badge
   end

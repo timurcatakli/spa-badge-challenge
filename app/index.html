@@ -7,38 +7,114 @@
   <title>SPABadge</title>
 </head>
 <body>
-  <div class="container">
-    <div class="logo">
-      <h1> SPA Badge </h1>
+  <div class="container" id="container">
+    <div class="logo" id="title"></div>
+    <div id="div_teachers"></div>
+
+
+
+    
+    <div id="show-user">
+      <h1>Words To Be Remembered By</h1>
+      <h2></h2>
+      <div id="div_badges"></div>
     </div>
-
-
- <script id="header" type="text/x-handlebars-template">​
- <div> {{ headerTitle }} </div>​
-   {{#each teacherdata}}
-    <li>{{this.name}}</li>
-  {{/each}}
-​</script>
-
-
-
-    <h1> SF Teachers </h1>
-      <ul>
-        <script type="text/x-handlebars-template">{{"something"}}</script>
-        <li><a href="#">Anne</a></li>
-        <li><a href="#">Derek</a></li>
-        <li><a href="#">Hunter</li>
-        <li><a href="#">Jen</a></li>
-        <li><a href="#">Julian</a></li>
-        <li><a href="#">Sarah</a></li>
-        <li><a href="#">Shambhavi</a></li>
-        <li><a href="#">Walker</a></li>
-        <li><a href="sample-page.html">Sample Page</a></li>
-      </ul>
   </div>
 
 
-  <script src="js/app.js"></script>
+  <script id="teacher-template" type="text/x-handlebars-template">
+    <h1>{{subtitle}}</h1>
+      <ul>
+        {{#each teachers}}
+        <li><a href="{{id}}" id="{{id}}" class="teacher_link">{{name}}</a></li>
+        {{/each}}
+      </ul>
+  </script>
 
+
+  <script id="single-badge-template" type="text/x-handlebars-template">
+      <div id="1" class="slogan">
+        <div class="body">{{title}}</div>
+        <div class="vote-on">
+          <form action="#" id="up-badge-form">
+            <input type="hidden" name="slogan_id" value={{id}}>
+            <input type="hidden" name="teacher_id" value={{teacher_id}}>
+            <input type="hidden" name="vote_type" value="1">
+            <button class="up" type="submit" name="submit">
+              <img src="img/upvote.gif" alt="upvote_image" />
+            </button>
+          </form>
+        </div>
+        <div class="vote-on">
+          <form action="#" id="down-badge-form">
+            <input type="hidden" name="teacher_id" value={{teacher_id}}>
+            <input type="hidden" name="slogan_id" value={{id}}>
+            <input type="hidden" name="vote_type" value="-1">
+            <button class="down" type="submit" name="submit">
+                <img src="img/downvote.gif" alt="downvote_image" />
+            </button>
+          </form>
+        </div>
+
+        <div class="points" id="point{{id}}">
+          ({{points}} points)
+        </div>
+      </div>
+  </script>
+
+  <script id="badge-template" type="text/x-handlebars-template">
+  <div id="oreilly">
+    <div id="div_badges_list">
+    {{#each badges}}
+      <div id="1" class="slogan">
+        <div class="body">{{title}}</div>
+        <div class="vote-on">
+          <form action="#" id="up-badge-form">
+            <input type="hidden" name="slogan_id" value={{id}}>
+            <input type="hidden" name="teacher_id" value={{teacher_id}}>
+            <input type="hidden" name="vote_type" value="1">
+            <button class="up" type="submit" name="submit">
+              <img src="img/upvote.gif" alt="upvote_image" />
+            </button>
+          </form>
+        </div>
+        <div class="vote-on">
+          <form action="#" id="down-badge-form">
+            <input type="hidden" name="teacher_id" value={{teacher_id}}>
+            <input type="hidden" name="slogan_id" value={{id}}>
+            <input type="hidden" name="vote_type" value="-1">
+            <button class="down" type="submit" name="submit">
+                <img src="img/downvote.gif" alt="downvote_image" />
+            </button>
+          </form>
+        </div>
+
+        <div class="points" id="point{{id}}">
+          ({{points}} points)
+        </div>
+      </div>
+    {{/each}}
+    </div>
+    <div class="add-badge" id="add-badge">
+      <h3> Add a Badge: </h3>
+      <form action="#" id="add-badge-form" method="POST">
+        <input type="hidden" name="user_id" value="{{teacher_id}}" />
+        <input type="text" name="title" />
+        <input type="image" src="img/add_button.png" alt="Add Slogan" />
+      </form>
+
+      <br>
+      <br>
+      <br>
+      <span class="nav-link"><a href="index.html"> HOME </a></span>
+
+
+
+    </div>
+
+  </div>
+  </script>
+
+  <script src="js/app.js"></script>
 </body>
 </html>

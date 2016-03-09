@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <script src="js/miniquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+  <title>Handlebars</title>
+</head>
+<body>
+<div id="derekData"></div>
+
+<script type="text/javascript">
+  var myInfo = "<p>My name is {{name}} and I live at {{street}} in {{city}}, {{state}}</p>"
+  var template = Handlebars.compile(myInfo);
+  var data = template({name: "Derek", street: "123 Main St.", city: "Pittsburgh", state: "PA"});
+  document.getElementById("derekData").innerHTML += data;
+</script>
+</body>
+</html>
